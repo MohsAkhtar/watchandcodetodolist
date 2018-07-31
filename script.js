@@ -1,3 +1,4 @@
+// array of todolist with methods that control array
 var todoList = {
   todos: [],
   addTodo: function(todoText) {
@@ -84,6 +85,7 @@ var handlers = {
   }
 };
 
+// just object for showing todolist
 var view = {
   displayTodos: function() {
     var todosUl = document.querySelector('ul');
@@ -103,5 +105,12 @@ var view = {
       todoLi.textContent = todoTextWithCompletion;
       todosUl.appendChild(todoLi);
     }
+  },
+// A way to create delete buttons
+  createDeleteButton: function(){
+    var deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.className = 'deleteButton';
+    return deleteButton;
   }
 };
