@@ -103,6 +103,8 @@ var view = {
 
 /* Setting the text of the li elements with todo list array*/     
       todoLi.textContent = todoTextWithCompletion;
+      //Adds delete button to each items in list
+      todoLi.appendChild(this.createDeleteButton());
       todosUl.appendChild(todoLi);
     }
   },
