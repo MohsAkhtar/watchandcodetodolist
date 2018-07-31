@@ -106,8 +106,17 @@ var view = {
     todosUl.innerHTML = '';
     for(var i = 0; i < todoList.todos.length; i++){
       var todoLi = document.createElement('li');
-      /* Setting the text of the li elements with todo list array*/
-      todoLi.textContent = todoList.todos[i].todoText;
+      var todo = todoList.todos[i];
+      var todoTextWithCompletion = '';
+
+      if(todo.completed === true){
+        todoTextWithCompletion =  '(x) ' + todo.todoText;
+      } else {
+        todoTextWithCompletion =  '( ) ' + todo.todoText;
+      }
+
+/* Setting the text of the li elements with todo list array*/     
+      todoLi.textContent = todoTextWithCompletion;
       todosUl.appendChild(todoLi);
     }
   }
