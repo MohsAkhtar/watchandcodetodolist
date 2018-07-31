@@ -106,6 +106,8 @@ var view = {
     todosUl.innerHTML = '';
     for(var i = 0; i < todoList.todos.length; i++){
       var todoLi = document.createElement('li');
+      /* Setting the text of the li elements with todo list array*/
+      todoLi.textContent = todoList.todos[i].todoText;
       todosUl.appendChild(todoLi);
     }
   }
