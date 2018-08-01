@@ -21,22 +21,22 @@ var todoList = {
     var totalTodos = this.todos.length;
     var completedTodos = 0;
 
-    for (var i = 0; i < totalTodos; i++) {
-      if (this.todos[i].completed === true) {
+    // Changed for loops to foreach
+    this.todos.forEach(function(todo) {
+      if(todo.completed === true){
         completedTodos++;
       }
-    }
-    // Case 1: If everythings true, make everything false
-    if (completedTodos === totalTodos) {
-      for (var i = 0; i < totalTodos; i++) {
-        this.todos[i].completed = false;
+    });
+
+    this.todos.forEach(function(todo) {
+      // Case 1: if everythings true, make everything false
+      if(completedTodos === totalTodos){
+        todo.completed = false;
+      // Case 2: else everything is true
+      } else {
+        todo.completed = true;
       }
-      // Case 2: Otherwise, make everything true
-    } else {
-      for (var i = 0; i < totalTodos; i++) {
-        this.todos[i].completed = true;
-      }
-    }
+    });
   }
 };
 
@@ -116,6 +116,7 @@ var view = {
     var todosUl = document.querySelector('ul');
 
     // instead of adding events to every li we add it to enclosing ul
+    // Event delegation
     todosUl.addEventListener('click', function(event){
     // Delete buttons should have access to the todo id
     console.log(event.target.parentNode.id);
