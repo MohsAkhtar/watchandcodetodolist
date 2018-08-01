@@ -86,9 +86,12 @@ var view = {
   displayTodos: function() {
     var todosUl = document.querySelector('ul');
     todosUl.innerHTML = '';
-    for(var i = 0; i < todoList.todos.length; i++){
+        
+    // this - refers to rhe view object
+    // forEach(callback function, this)
+    todoList.todos.forEach(function(todo, position){
+
       var todoLi = document.createElement('li');
-      var todo = todoList.todos[i];
       var todoTextWithCompletion = '';
 
       if(todo.completed === true){
@@ -97,13 +100,14 @@ var view = {
         todoTextWithCompletion =  '( ) ' + todo.todoText;
       }
       // Sets each li so it should have an id that has the todo position
-      todoLi.id = i;
-/* Setting the text of the li elements with todo list array*/     
+       todoLi.id = position;
+// /* Setting the text of the li elements with todo list array*/     
       todoLi.textContent = todoTextWithCompletion;
       //Adds delete button to each items in list
       todoLi.appendChild(this.createDeleteButton());
       todosUl.appendChild(todoLi);
-    }
+    
+    }, this); // added this here to refer back to view object
   },
 // A way to create delete buttons
   createDeleteButton: function(){
