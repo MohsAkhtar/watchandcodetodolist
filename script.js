@@ -100,7 +100,8 @@ var view = {
       } else {
         todoTextWithCompletion =  '( ) ' + todo.todoText;
       }
-
+      // Sets each li so it should have an id that has the todo position
+      todoLi.id = i;
 /* Setting the text of the li elements with todo list array*/     
       todoLi.textContent = todoTextWithCompletion;
       //Adds delete button to each items in list
@@ -116,3 +117,10 @@ var view = {
     return deleteButton;
   }
 };
+
+var todosUl = document.querySelector('ul');
+
+todosUl.addEventListener('click', function(event){
+  // Delete buttons should have access to the todo id
+  console.log(event.target.parentNode.id);
+});
